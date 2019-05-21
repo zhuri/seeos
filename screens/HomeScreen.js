@@ -1,20 +1,13 @@
 import React from 'react';
 import {
-  Image,
-  Platform,
-  ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
-  ListView,
-  SectionList,
-    H1
+  SectionList
 } from 'react-native';
+import SegmentedControlTab from 'react-native-segmented-control-tab'
 import { WebBrowser } from 'expo';
-
-import { MonoText } from '../components/StyledText';
-// import console = require('console');
+import LogoTitle from './LogoTitle'
 
 const key_lecture_friday = require('./key_lecture_friday.json')
 const cataract_friday = require('./cataract_friday.json')
@@ -22,19 +15,27 @@ const glaucoma_friday = require('./glaucoma_friday.json')
 const retina_friday = require('./retina_friday.json')
 const seearvo_friday = require('./seearvo_friday.json')
 const oculoplastics_friday = require('./oculoplastics_friday.json')
+const sesion_shqip = require('./sesion_shqip.json')
+const eposter_friday = require('./eposter_friday.json')
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
-    title: 'Friday',
+    // headerTitle instead of title
+    headerTitle: <LogoTitle />,
   };
 
   constructor(props) {
     super(props);
-    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2  });
-
     this.state = {
-      // dataSource: ds.cloneWithRows(data)
+      selectedIndex: 0,
     };
+  }
+
+  handleIndexChange = (index) => {
+    this.setState({
+      ...this.state,
+      selectedIndex: index,
+    });
   }
 
   ListViewItemSeparator = () => {
@@ -56,12 +57,28 @@ export default class HomeScreen extends React.Component {
   }
 
   render() {
+    const segment = this.state.selectedIndex
+    let isEnglish = segment == 0 ? true : false
+    let isPoster = segment == 2 ? true : false
     return (
       <View style={styles.container}>
-        <SectionList
+        <SegmentedControlTab
+                    values={['SEEOS', 'SHOFK', 'E-Poster']}
+                    selectedIndex={this.state.selectedIndex}
+                    onTabPress={this.handleIndexChange}
+                    />
+                    {
+                      isEnglish ? 
+                      <SectionList
           renderItem={({item, index, section}) => (
-            <View>
-              <View style={styles.wrapper1}>
+            <View style={{borderBottomColor:'#8fb1aa',
+                          borderBottomWidth:1                  
+                          }}>
+              <Text style={styles.text1} key={0}>{item.time}</Text>              
+              <Text style={styles.text2} key={1}>{item.description}</Text>
+              <Text style={styles.text3} key={2}>{item.speaker}</Text>
+              
+              {/* <View style={styles.wrapper1}>
                 <View style={{flex:2}}>
                   <Text style={styles.time} key={index}>{item.time}</Text>
                 </View>
@@ -71,7 +88,7 @@ export default class HomeScreen extends React.Component {
               </View>
               <View style={styles.wrapper2}>
                 <Text style={styles.speaker} key={index}>{item.speaker}</Text>
-              </View>
+              </View> */}
             </View>
           )}
           renderSectionHeader={({section: {title}}) => (
@@ -89,44 +106,51 @@ export default class HomeScreen extends React.Component {
             {title: 'GALA DINNER', data: [{"time": "20:30", "description": "GALA DINNER"}]},
           ]}
           keyExtractor={(item, index) => item + index}
-        />
-        {/* <SectionList
-          renderItem={({item}) => <ListItem title={item.description} />}
-          renderSectionHeader={({section}) => <H1 title={section.key} />}
-          sections={[ // homogeneous rendering between sections
-            {data: key_lecture_friday, key: "Key lecture"},
-            {data: cataract_friday, key: "Cataract"},
-            {data: glaucoma_friday, key: "Glaucoma"},
-          ]}
-        /> */}
-        {/* <ListView
-          dataSource={this.state.dataSource}
-          renderSeparator={this.ListViewItemSeparator}
-          renderHeader={this.RenderHeader}
-          renderRow={ (rowData, sectionID, rowID) => ( 
-            <View style={{
-              height: 60,
-              flexWrap: 'wrap',
-              // flexDirection: 'row',
-              // justifyContent: 'space-between',
-              // alignItems: 'center',
-              backgroundColor: 'white',
-            }}>
-              <View style={{
-                  flex: 1,
-                  flexDirection: 'row',
-                  justifyContent: 'flex-start',
-                  backgroundColor: 'green'
-                }}>
-                <Text style={styles.rowViewContainer} onPress={this.GetListViewItem.bind(this, rowData)} >{rowData.time} </Text> 
-              </View>
-              <Text style={styles.rowViewContainer} onPress={this.GetListViewItem.bind(this, rowData)} >{rowData.description} </Text> 
-              <View>
-                <Text style={styles.rowViewContainer} onPress={this.GetListViewItem.bind(this, rowData)} >{rowData.speaker} </Text> 
-              </View>
-            </View>
-          )}
-        /> */}
+        /> 
+        :
+          (isPoster ? 
+            <SectionList
+                      renderItem={({item, index, section}) => (
+                        <View style={{borderBottomColor:'#8fb1aa',
+                                      borderBottomWidth:1                  
+                                      }}>
+                          <Text style={styles.text1} key={0}>{item.time}</Text>              
+                          <Text style={styles.text2} key={1}>{item.description}</Text>
+                          <Text style={styles.text3} key={2}>{item.speaker}</Text>
+                        </View>
+                      )}
+                      renderSectionHeader={({section: {title}}) => (
+                        <Text style={styles.sectionHeader}>{title}</Text>
+                      )}
+                      sections={[
+                        {title: 'E-Poster', data: eposter_friday}                                   
+                      ]}
+                      keyExtractor={(item, index) => item + index}
+                    />
+            : 
+            <SectionList
+                      renderItem={({item, index, section}) => (
+                        <View style={{borderBottomColor:'#8fb1aa',
+                                      borderBottomWidth:1                  
+                                      }}>
+                          <Text style={styles.text1} key={0}>{item.time}</Text>              
+                          <Text style={styles.text2} key={1}>{item.description}</Text>
+                          <Text style={styles.text3} key={2}>{item.speaker}</Text>
+                        </View>
+                      )}
+                      renderSectionHeader={({section: {title}}) => (
+                        <Text style={styles.sectionHeader}>{title}</Text>
+                      )}
+                      sections={[
+                        {title: 'SESIONI 1', data: sesion_shqip},                      
+                        {title: 'DREKA', data: [{"time": "13:25-14:25", "description": ""}]}                      
+                      ]}
+                      keyExtractor={(item, index) => item + index}
+                    />
+            )
+          
+                    }
+        
       </View>
     );
   }
@@ -168,8 +192,30 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {  
     flex: 1,  
-    backgroundColor: "#5ead97"  
+    backgroundColor: "white"  
   },  
+  text1: {
+    fontSize: 14,
+    paddingTop: 2,  
+    paddingLeft: 10,  
+    paddingRight: 10,  
+    paddingBottom: 2
+  },
+  text2: {
+    fontSize: 18,
+    paddingTop: 2,  
+    paddingLeft: 10,  
+    paddingRight: 10,  
+    paddingBottom: 2
+  },
+  text3: {
+    fontSize: 16,
+    color: 'red',
+    paddingTop: 2,  
+    paddingLeft: 10,  
+    paddingRight: 10,  
+    paddingBottom: 2
+  },
   sectionHeader: {  
       paddingTop: 2,  
       paddingLeft: 10,  
@@ -192,7 +238,9 @@ const styles = StyleSheet.create({
   },
   speaker: {
     color: 'red',
-    paddingTop: 10 
+    paddingTop: 10,
+    paddingLeft: 120,
+    fontSize: 18
   },
   wrapper1: {
     flexWrap: 'wrap',              
