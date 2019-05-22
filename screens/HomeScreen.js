@@ -3,11 +3,14 @@ import {
   StyleSheet,
   Text,
   View,
-  SectionList
+  SectionList,
+  Alert,
+  Button
 } from 'react-native';
 import SegmentedControlTab from 'react-native-segmented-control-tab'
 import { WebBrowser } from 'expo';
 import LogoTitle from './LogoTitle'
+import FileViewer from 'react-native-file-viewer';
 
 const key_lecture_friday = require('./key_lecture_friday.json')
 const cataract_friday = require('./cataract_friday.json')
@@ -44,16 +47,17 @@ export default class HomeScreen extends React.Component {
     );
   };
 
-  GetListViewItem = (rowData) => {
-    // Alert.alert(rowData);
-  }
-
-  RenderHeader = () => {
-    return (
-      <View style={{marginTop: "2%"}}>
-        <Text>Header header header</Text>
-      </View>
-    )
+  GetListViewItem = () => {
+    // Alert.alert("clicked");
+    FileViewer.open('./file.txt')
+    .then(() => {
+      // success
+      console.log("success file open")
+    })
+    .catch(error => {
+      // error
+      console.log("error file open", error)
+    });
   }
 
   render() {
@@ -66,6 +70,16 @@ export default class HomeScreen extends React.Component {
                     values={['SEEOS', 'SHOFK', 'E-Poster']}
                     selectedIndex={this.state.selectedIndex}
                     onTabPress={this.handleIndexChange}
+                    borderRadius={0}
+                    
+                    tabStyle={{ 
+                      backgroundColor: 'white', 
+                      marginTop: 10, 
+                      borderColor: '#2f95dc', 
+                      marginBottom: 10 
+                    }}
+                    tabTextStyle={{ color: '#2f95dc' }}
+                    activeTabStyle={{ backgroundColor: '#2f95dc' }}
                     />
                     {
                       isEnglish ? 
@@ -73,22 +87,16 @@ export default class HomeScreen extends React.Component {
           renderItem={({item, index, section}) => (
             <View style={{borderBottomColor:'#8fb1aa',
                           borderBottomWidth:1                  
-                          }}>
+                          }}                          
+                          >
               <Text style={styles.text1} key={0}>{item.time}</Text>              
               <Text style={styles.text2} key={1}>{item.description}</Text>
               <Text style={styles.text3} key={2}>{item.speaker}</Text>
-              
-              {/* <View style={styles.wrapper1}>
-                <View style={{flex:2}}>
-                  <Text style={styles.time} key={index}>{item.time}</Text>
-                </View>
-                <View style={{flex:5}}>
-                  <Text style={styles.description} key={index}>{item.description}</Text>
-                </View>
-              </View>
-              <View style={styles.wrapper2}>
-                <Text style={styles.speaker} key={index}>{item.speaker}</Text>
-              </View> */}
+              {/* <Button
+                onPress={this.GetListViewItem}
+                title="Press Me"
+                color="#841584"
+              />                         */}
             </View>
           )}
           renderSectionHeader={({section: {title}}) => (

@@ -63,6 +63,15 @@ export default class LinksScreen extends React.Component {
                     values={['SEEOS', 'SHOFK', 'E-Poster']}
                     selectedIndex={this.state.selectedIndex}
                     onTabPress={this.handleIndexChange}
+                    borderRadius={0}                    
+                    tabStyle={{ 
+                      backgroundColor: 'white', 
+                      marginTop: 10, 
+                      borderColor: '#163258', 
+                      marginBottom: 10 
+                    }}
+                    tabTextStyle={{ color: '#163258' }}
+                    activeTabStyle={{ backgroundColor: '#163258' }}
                     />
                     {
                       isEnglish ? 

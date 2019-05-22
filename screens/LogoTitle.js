@@ -1,15 +1,19 @@
 import React from 'react';
 import {
-  Image
+  Image,
+  Dimensions
 } from 'react-native';
 
 export default class LogoTitle extends React.Component {
     render() {
       return (
         <Image
-          source={require('./spiro.png')}
-          style={{ flexDirection: 'row', height: 60}}
-        />
+        source={require('./fff.png')}
+        width={Dimensions.get('window').width}
+        style={{    
+          height: 70
+          }}      
+          />
       );
     }
   }
