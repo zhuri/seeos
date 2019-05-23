@@ -3,9 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
-  SectionList,
-  Alert,
-  Button
+  SectionList
 } from 'react-native';
 import SegmentedControlTab from 'react-native-segmented-control-tab'
 import { WebBrowser } from 'expo';
@@ -23,7 +21,6 @@ const eposter_friday = require('./eposter_friday.json')
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
-    // headerTitle instead of title
     headerTitle: <LogoTitle />,
   };
 
@@ -39,6 +36,7 @@ export default class HomeScreen extends React.Component {
       ...this.state,
       selectedIndex: index,
     });
+    
   }
 
   ListViewItemSeparator = () => {
@@ -47,18 +45,18 @@ export default class HomeScreen extends React.Component {
     );
   };
 
-  GetListViewItem = () => {
-    // Alert.alert("clicked");
-    FileViewer.open('./file.txt')
-    .then(() => {
-      // success
-      console.log("success file open")
-    })
-    .catch(error => {
-      // error
-      console.log("error file open", error)
-    });
-  }
+  // GetListViewItem = () => {
+  //   // Alert.alert("clicked");
+  //   FileViewer.open('./file.txt')
+  //   .then(() => {
+  //     // success
+  //     console.log("success file open")
+  //   })
+  //   .catch(error => {
+  //     // error
+  //     console.log("error file open", error)
+  //   });
+  // }
 
   render() {
     const segment = this.state.selectedIndex
