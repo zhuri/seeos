@@ -6,7 +6,7 @@
     "sdkVersion": "32.0.0",
     "ios": {
       "bundleIdentifier": "com.endritzhuri.seeos",
-      "supportsTablet": true
+      "supportsTablet": false
     },
     "android": {
       "package": "com.endrit.seeos"
