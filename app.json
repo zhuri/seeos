@@ -5,19 +5,16 @@
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "ios": {
-      "bundleIdentifier": "com.endrit.seeos",
+      "bundleIdentifier": "com.endritzhuri.seeos",
       "supportsTablet": true
     },
     "android": {
       "package": "com.endrit.seeos"
     },
-    "platforms": [
-      "ios",
-      "android"
-    ],
+    "platforms": ["ios", "android"],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.jpeg",
+    "icon": "./assets/images/icon.png",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "cover",
@@ -26,8 +23,6 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "assetBundlePatterns": ["*/"]
   }
 }
