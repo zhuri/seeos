@@ -8,7 +8,6 @@ import {
 import SegmentedControlTab from 'react-native-segmented-control-tab'
 import { WebBrowser } from 'expo';
 import LogoTitle from './LogoTitle'
-import FileViewer from 'react-native-file-viewer';
 
 const key_lecture_friday = require('./key_lecture_friday.json')
 const cataract_friday = require('./cataract_friday.json')
@@ -74,7 +73,7 @@ export default class HomeScreen extends React.Component {
                       backgroundColor: 'white', 
                       marginTop: 10, 
                       borderColor: '#2f95dc', 
-                      marginBottom: 10 
+                      marginBottom: 1
                     }}
                     tabTextStyle={{ color: '#2f95dc' }}
                     activeTabStyle={{ backgroundColor: '#2f95dc' }}
@@ -83,7 +82,7 @@ export default class HomeScreen extends React.Component {
                       isEnglish ? 
                       <SectionList
           renderItem={({item, index, section}) => (
-            <View style={{borderBottomColor:'#8fb1aa',
+            <View style={{borderBottomColor:'#2f95dc',
                           borderBottomWidth:1                  
                           }}                          
                           >
@@ -117,7 +116,7 @@ export default class HomeScreen extends React.Component {
           (isPoster ? 
             <SectionList
                       renderItem={({item, index, section}) => (
-                        <View style={{borderBottomColor:'#8fb1aa',
+                        <View style={{borderBottomColor:'#2f95dc',
                                       borderBottomWidth:1                  
                                       }}>
                           <Text style={styles.text1} key={0}>{item.time}</Text>              
@@ -136,7 +135,7 @@ export default class HomeScreen extends React.Component {
             : 
             <SectionList
                       renderItem={({item, index, section}) => (
-                        <View style={{borderBottomColor:'#8fb1aa',
+                        <View style={{borderBottomColor:'#2f95dc',
                                       borderBottomWidth:1                  
                                       }}>
                           <Text style={styles.text1} key={0}>{item.time}</Text>              
@@ -230,8 +229,8 @@ const styles = StyleSheet.create({
       fontSize: 22,  
       fontWeight: 'bold',  
       color: "#fff",  
-      backgroundColor: '#8fb1aa',  
-  },  
+      backgroundColor: '#2f95dc',  
+  },  // 8fb1aa
   description: {  
       padding: 10,  
       fontSize: 18,

@@ -19,7 +19,6 @@ export default class LogoTitle extends React.Component {
         <Image
           source={require('./main.png')}
           style={{flex:1, height: 70, width: Dimensions.get('window').width}}
-          resizeMode="contain"  
           />
 
       );

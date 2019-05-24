@@ -67,17 +67,17 @@ export default class LinksScreen extends React.Component {
                     tabStyle={{ 
                       backgroundColor: 'white', 
                       marginTop: 10, 
-                      borderColor: '#163258', 
-                      marginBottom: 10 
+                      borderColor: '#2f95dc', 
+                      marginBottom: 1 
                     }}
-                    tabTextStyle={{ color: '#163258' }}
-                    activeTabStyle={{ backgroundColor: '#163258' }}
+                    tabTextStyle={{ color: '#2f95dc' }}
+                    activeTabStyle={{ backgroundColor: '#2f95dc' }}
                     />
                     {
                       isEnglish ? 
                       <SectionList
                       renderItem={({item, index, section}) => (
-                        <View style={{borderBottomColor:'#8fb1aa',
+                        <View style={{borderBottomColor:'#2f95dc',
                                       borderBottomWidth:1                  
                                       }}>
                           <Text style={styles.text1} key={0}>{item.time}</Text>              
@@ -103,7 +103,7 @@ export default class LinksScreen extends React.Component {
                     (isPoster ? 
                       <SectionList
                       renderItem={({item, index, section}) => (
-                        <View style={{borderBottomColor:'#8fb1aa',
+                        <View style={{borderBottomColor:'#2f95dc',
                                       borderBottomWidth:1                  
                                       }}>
                           <Text style={styles.text1} key={0}>{item.time}</Text>              
@@ -124,7 +124,7 @@ export default class LinksScreen extends React.Component {
                       
                       <SectionList
                       renderItem={({item, index, section}) => (
-                        <View style={{borderBottomColor:'#8fb1aa',
+                        <View style={{borderBottomColor:'#2f95dc',
                                       borderBottomWidth:1                  
                                       }}>
                           <Text style={styles.text1} key={0}>{item.time}</Text>              
@@ -216,7 +216,7 @@ const styles = StyleSheet.create({
       fontSize: 22,  
       fontWeight: 'bold',  
       color: "#fff",  
-      backgroundColor: '#8fb1aa',  
+      backgroundColor: '#2f95dc',  
   },  
   description: {  
       padding: 10,  
