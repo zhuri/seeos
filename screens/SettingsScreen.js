@@ -17,18 +17,20 @@ export default class SettingsScreen extends React.Component {
     super();
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     let rowSpace = ""
-    let row1 = "Dear Friends, Dear Colleagues,"
-    let row2 = "On behalf of the South-East European Ophthalmological Society, as the current president and as a representative of Kosovo Association of the Ophthalmologists, I am most pleased to invite you in the 16th SEEOS Congress which will be held in Prishtina, Republic of Kosovo, between “ May 31st until June 2nd 2019 “. This will be the Joint Congress with Kosovo Association of Ophthalmologists. Kosovo Association of Ophthalmologists was established in 2002 in Prishtina and is member of SEEOS, SOE and ICO. Currently, we have105 members, where among them are 80 ophthalmologists and 25 residents."
-    let row3 = "We are inviting the SEEOS members and ophthalmologists from all over the world to hold lectures, present posters or videos. Our intention is to provide an outstanding program, presented by world-renowned speakers. It will be a great opportunity to share experiences, talk about modern trends in the development of ophthalmologic care. We hope that you will also enjoy debates on controversial topics and discussions specifically aimed at the younger ophthalmologists, all of which will add interest and, at times, fun to the packed scientific program."
-    let row4 = "No SEEOS Congress would be complete without a great social program, which traditionally reflects the flavor of the host city, Prishtina is a unique modern city with the youngest population in Europe, has so much to offer, catering to every taste with its musical, artistic, and culinary traditions."
-    let row5 = "Let me again invite you to Prishtina next year on behalf of the organizing committee of the Joint Congress. Let's look forward to an interesting congress, a manifold collegial exchange, to meeting with old friends and making new friends."
-    let row6 = "Yours sincerely, "
+    let row1 = "Distinguished Speakers, Colleagues, friends and guests,"
+    let row2 = "We warmly welcome you to Prishtina - Kosovo, and thank you for joining us at the 16th Congress of the South-East European Ophthalmological Society and 3rd Congress of the Kosovo Association of Ophthalmologists. "
+    let row3 = "We would like to present our compliments to our eminent speakers, the delegates, and all participants who have come from all over Europe to participate in this Joint Congress. We are greatly honoured and pleased to welcome you in Prishtina, on behalf of the South-East European Ophthalmological Society and Kosovo Association of Ophthalmologists. We have participants from 14 countries gathered here today, making our congress a true European initiative. This Congress will be an excellent opportunity to exchange academic and clinical developments, and to build a lifelong network."
+    let row4 = "The South-East European Ophthalmological Society (SEEOS) was founded in 2004, as an international regional association of the ophthalmologist from South East European countries. Every year, one of the member states organizes the Congress of SEEOS. The first congress took place in Sarajevo – Bosnia and Herzegovina, in 2004 and last one in Szeged - Hungary in 2018. This year, it will take place in Prishtina - Kosovo, hoping to be successful as previous congresses."
+    let row5 = "We would like also to thank all the sponsors for their support that enabled the realization of the Congress."
+    let row6 = "On behalf of the South-East European Ophthalmological Society and Kosovo Association of Ophthalmologists, we wish you success and a pleasant stay in Prishtina."
     let row7 = "Prof. Gazmend Kacaniku"
     let row8 = "President of SEEOS"
+    let row9 = "Prof. Naser Salihu"
+    let row10 = "President of KAO"
     this.state = {
       dataSource: ds.cloneWithRows([row1, rowSpace, row2, rowSpace, row3, 
-        rowSpace, row4, rowSpace, row5, rowSpace, row6, row7, row8, 
-        rowSpace, rowSpace, rowSpace, rowSpace, rowSpace, rowSpace]),
+        rowSpace, row4, rowSpace, row5, rowSpace, row6, rowSpace, rowSpace, row7, row8, 
+        rowSpace, rowSpace, row9, row10, rowSpace, rowSpace, rowSpace, rowSpace, rowSpace, rowSpace]),
     };
   }
 
