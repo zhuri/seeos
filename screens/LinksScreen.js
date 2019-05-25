@@ -67,17 +67,17 @@ export default class LinksScreen extends React.Component {
                     tabStyle={{ 
                       backgroundColor: 'white', 
                       marginTop: 10, 
-                      borderColor: '#2f95dc', 
+                      borderColor: '#b61f48', 
                       marginBottom: 1 
                     }}
-                    tabTextStyle={{ color: '#2f95dc' }}
-                    activeTabStyle={{ backgroundColor: '#2f95dc' }}
+                    tabTextStyle={{ color: '#b61f48' }}
+                    activeTabStyle={{ backgroundColor: '#b61f48' }}
                     />
                     {
                       isEnglish ? 
                       <SectionList
                       renderItem={({item, index, section}) => (
-                        <View style={{borderBottomColor:'#2f95dc',
+                        <View style={{borderBottomColor:'#b61f48',
                                       borderBottomWidth:1                  
                                       }}>
                           <Text style={styles.text1} key={0}>{item.time}</Text>              
@@ -103,7 +103,7 @@ export default class LinksScreen extends React.Component {
                     (isPoster ? 
                       <SectionList
                       renderItem={({item, index, section}) => (
-                        <View style={{borderBottomColor:'#2f95dc',
+                        <View style={{borderBottomColor:'#b61f48',
                                       borderBottomWidth:1                  
                                       }}>
                           <Text style={styles.text1} key={0}>{item.time}</Text>              
@@ -124,7 +124,7 @@ export default class LinksScreen extends React.Component {
                       
                       <SectionList
                       renderItem={({item, index, section}) => (
-                        <View style={{borderBottomColor:'#2f95dc',
+                        <View style={{borderBottomColor:'#b61f48',
                                       borderBottomWidth:1                  
                                       }}>
                           <Text style={styles.text1} key={0}>{item.time}</Text>              
@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
   },
   text3: {
     fontSize: 16,
-    color: 'red',
+    color: '#b61f48',
     paddingTop: 2,  
     paddingLeft: 10,  
     paddingRight: 10,  
@@ -216,7 +216,7 @@ const styles = StyleSheet.create({
       fontSize: 22,  
       fontWeight: 'bold',  
       color: "#fff",  
-      backgroundColor: '#2f95dc',  
+      backgroundColor: '#b61f48',  
   },  
   description: {  
       padding: 10,  
@@ -229,7 +229,7 @@ const styles = StyleSheet.create({
     paddingTop: 10
   },
   speaker: {
-    color: 'red',
+    color: '#b61f48',
     paddingTop: 10,
     paddingLeft: 120,
     fontSize: 18
