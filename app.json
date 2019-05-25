@@ -16,9 +16,14 @@
     "orientation": "portrait",
     "icon": "./assets/images/logo.png",
     "splash": {
-      "image": "./assets/images/posteri.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#ffffff",
+      "ldpi": "./assets/images/splash.png",
+      "mdpi": "./assets/images/splash.png",
+      "hdpi": "./assets/images/splash.png",
+      "xhdpi": "./assets/images/splash.png",
+      "xxhdpi": "./assets/images/splash.png",
+      "xxxhdpi": "./assets/images/splash.png",
+      "resizeMode": "contain"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
