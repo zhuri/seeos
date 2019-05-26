@@ -1,98 +1,184 @@
 import React from 'react';
 import {
+  StyleSheet,
   Text,
   View,
-  ListView,
+  SectionList
 } from 'react-native';
-
+import SegmentedControlTab from 'react-native-segmented-control-tab'
+import { WebBrowser } from 'expo';
 import LogoTitle from './LogoTitle'
 
-export default class SettingsScreen extends React.Component {
+const currency = require('./currency.json')
+const cme_credits = require('./cme_credits.json')
+const registration_opening = require('./registration_opening.json')
+const venue = require('./venue.json')
+
+export default class HomeScreen extends React.Component {
   static navigationOptions = {
     headerTitle: <LogoTitle />,
   };
 
-  constructor() {
-    super();
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    let rowSpace = ""
-    let row11 = "Swiss Diamond Hotel"
-    let row12 = "Main Hall Dyar Hall - SEEOS"
-    let row13 = "Ulpiana & Marec Hall - Expo"
-    let row14 = "Artana - SHOFK"
-    let row2 = "The official currency of the congress is the Euro."
-    let row3 = "30.05.2019 - 15:00-19:00     Thursday"
-    let row31 = "31.05.2019 - 08:00-18:00     Friday"
-    let row32 = "31.05.2019 - 09:00-10:00     Opening ceremony "
-    let row33 = "31.05.2019 - 10:00-10:30     Welcome Cocktail"
-    let row41 = "08:00-18:00    Registration"
-    let row42 = "09:00-10:00    Opening Ceremony"
-    let row43 = "10:00-10:30    Welcome Cocktail"
-    
-    let row53  = "This congress had been accredited by the Kosovo Doctors Chamber for Continuing Medical Education (CME) with 20 CME credits for active participants, and 12 CME credits for passive participants."
-    let row54 = "Certificates will be issued on Saturday 1st of June."
-   
+  constructor(props) {
+    super(props);
     this.state = {
-      dataSource1: ds.cloneWithRows([row11, row12, row14, row13]),
-      dataSource2: ds.cloneWithRows([row2]),
-      dataSource3: ds.cloneWithRows([row3, row31, row32, row33]),
-      dataSource4: ds.cloneWithRows([row41, row42, row43]),
-      dataSource5: ds.cloneWithRows([row53, row54]),
+      selectedIndex: 0,
     };
   }
 
-  render() {
-    return (
-      <View style={{borderBottomColor: 'red'}}>
-        <View><Text style={{fontSize: 20, 
-          fontWeight: "bold", 
-          paddingLeft: 10, 
-          paddingTop: 10,
-          backgroundColor: "#b61f48",
-          color: "#fff"
-          }}>Venue</Text></View>
-        <ListView
-          dataSource={this.state.dataSource1}
-          renderRow={(rowData) => <Text style={{fontSize: 16, paddingLeft: 10}}>{rowData}</Text>}
-        />
-        <View><Text style={{fontSize: 20, 
-          fontWeight: "bold", 
-          paddingLeft: 10, 
-          paddingTop: 10,
-          backgroundColor: "#b61f48",
-          color: "#fff"
-          }}>Currency</Text></View>
-          <ListView
-          dataSource={this.state.dataSource2}
-          renderRow={(rowData) => <Text style={{fontSize: 16, paddingLeft: 10}}>{rowData}</Text>}
-          />
-
-          <View><Text style={{fontSize: 20, 
-            fontWeight: "bold", 
-            paddingLeft: 10, 
-            paddingTop: 10,
-            backgroundColor: "#b61f48",
-            color: "#fff"
-            }}>Registration & Opening</Text></View>
-            <ListView
-              dataSource={this.state.dataSource3}
-              renderRow={(rowData) => <Text style={{fontSize: 16, paddingLeft: 10}}>{rowData}</Text>}
-              />
-
-
-<View><Text style={{fontSize: 20, 
-              fontWeight: "bold", 
-              paddingLeft: 10, 
-              paddingTop: 10,
-              backgroundColor: "#b61f48",
-              color: "#fff"
-              }}>CME Credits</Text></View>
-            <ListView
-              dataSource={this.state.dataSource5}
-              renderRow={(rowData) => <Text style={{fontSize: 16, paddingLeft: 10}}>{rowData}</Text>}
-              />
-      </View>
-      
-    )
+  handleIndexChange = (index) => {
+    this.setState({
+      ...this.state,
+      selectedIndex: index,
+    });
+    
   }
+
+  ListViewItemSeparator = () => {
+    return (
+      <View style={{ height: 0.5, width: "100%", backgroundColor: "#000" }} />
+    );
+  };
+
+  render() {
+    const segment = this.state.selectedIndex    
+    return (
+      <View style={styles.container}>
+        <View style={{marginTop: 10}}></View>
+        <SegmentedControlTab
+                    values={[]}
+                    selectedIndex={this.state.selectedIndex}
+                    onTabPress={this.handleIndexChange}
+                    borderRadius={0}
+                    
+                    tabStyle={{ 
+                      backgroundColor: 'white', 
+                      marginTop: 10, 
+                      borderColor: '#b61f48', 
+                      marginBottom: 1
+                    }}
+                    tabTextStyle={{ color: '#b61f48' }}
+                    activeTabStyle={{ backgroundColor: '#b61f48' }}
+                    />                    
+                      <SectionList
+                        renderItem={({item, index, section}) => (
+                          <View>                   
+                            <Text style={styles.text2} key={1}>{item.description}</Text>                        
+                          </View>
+                        )}
+                        renderSectionHeader={({section: {title}}) => (
+                          <Text style={styles.sectionHeader}>{title}</Text>
+                        )}
+          sections={[
+            {title: 'Venue', data: venue},
+            {title: 'Currency', data: currency},
+            {title: 'Registration & Opening', data: registration_opening},
+            {title: 'CME Credits', data: cme_credits}            
+          ]}
+          keyExtractor={(item, index) => item + index}
+        /> 
+        
+      </View>
+    );
+  }
+
+  _maybeRenderDevelopmentModeWarning() {
+    if (__DEV__) {
+      const learnMoreButton = (
+        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
+          Learn more
+        </Text>
+      );
+
+      return (
+        <Text style={styles.developmentModeText}>
+          Development mode is enabled, your app will be slower but you can use useful development
+          tools. {learnMoreButton}
+        </Text>
+      );
+    } else {
+      return (
+        <Text style={styles.developmentModeText}>
+          You are not in development mode, your app will run at full speed.
+        </Text>
+      );
+    }
+  }
+
+  _handleLearnMorePress = () => {
+    WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/guides/development-mode');
+  };
+
+  _handleHelpPress = () => {
+    WebBrowser.openBrowserAsync(
+      'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
+    );
+  };
 }
+
+const styles = StyleSheet.create({
+  container: {  
+    flex: 1,  
+    backgroundColor: "white"  
+  },  
+  text1: {
+    fontSize: 14,
+    paddingTop: 2,  
+    paddingLeft: 10,  
+    paddingRight: 10,  
+    paddingBottom: 2
+  },
+  text2: {
+    fontSize: 16,
+    paddingTop: 2,  
+    paddingLeft: 10,  
+    paddingRight: 10,  
+    paddingBottom: 2
+  },
+  text3: {
+    fontSize: 16,
+    color: '#b61f48',
+    paddingTop: 2,  
+    paddingLeft: 10,  
+    paddingRight: 10,  
+    paddingBottom: 2
+  },
+  sectionHeader: {  
+      paddingTop: 2,  
+      paddingLeft: 10,  
+      paddingRight: 10,  
+      paddingBottom: 2,  
+      fontSize: 22,  
+      fontWeight: 'bold',  
+      color: "#fff",  
+      backgroundColor: '#b61f48',  
+  },  // 8fb1aa
+  description: {  
+      padding: 10,  
+      fontSize: 18,
+      flexWrap: 'wrap',
+      justifyContent: 'flex-end'
+  },
+  time: {
+    justifyContent: 'flex-start',
+    paddingTop: 10
+  },
+  speaker: {
+    color: '#b61f48',
+    paddingTop: 10,
+    paddingLeft: 120,
+    fontSize: 18
+  },
+  wrapper1: {
+    flexWrap: 'wrap',              
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    borderTopColor:'#8fb1aa',
+    borderTopWidth:1
+  },
+  wrapper2: {
+    flexWrap: 'wrap',              
+    backgroundColor: 'white',
+    flexDirection: 'row'
+  }
+});
