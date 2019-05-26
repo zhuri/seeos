@@ -44,7 +44,7 @@ export default class SettingsScreen extends React.Component {
   render() {
     return (
       <View style={{borderBottomColor: 'red'}}>
-        <View><Text style={{fontSize: 22, 
+        <View><Text style={{fontSize: 20, 
           fontWeight: "bold", 
           paddingLeft: 10, 
           paddingTop: 10,
@@ -53,9 +53,9 @@ export default class SettingsScreen extends React.Component {
           }}>Venue</Text></View>
         <ListView
           dataSource={this.state.dataSource1}
-          renderRow={(rowData) => <Text style={{fontSize: 18, paddingLeft: 10}}>{rowData}</Text>}
+          renderRow={(rowData) => <Text style={{fontSize: 16, paddingLeft: 10}}>{rowData}</Text>}
         />
-        <View><Text style={{fontSize: 22, 
+        <View><Text style={{fontSize: 20, 
           fontWeight: "bold", 
           paddingLeft: 10, 
           paddingTop: 10,
@@ -64,10 +64,10 @@ export default class SettingsScreen extends React.Component {
           }}>Currency</Text></View>
           <ListView
           dataSource={this.state.dataSource2}
-          renderRow={(rowData) => <Text style={{fontSize: 18, paddingLeft: 10}}>{rowData}</Text>}
+          renderRow={(rowData) => <Text style={{fontSize: 16, paddingLeft: 10}}>{rowData}</Text>}
           />
 
-          <View><Text style={{fontSize: 22, 
+          <View><Text style={{fontSize: 20, 
             fontWeight: "bold", 
             paddingLeft: 10, 
             paddingTop: 10,
@@ -76,11 +76,11 @@ export default class SettingsScreen extends React.Component {
             }}>Registration & Opening</Text></View>
             <ListView
               dataSource={this.state.dataSource3}
-              renderRow={(rowData) => <Text style={{fontSize: 18, paddingLeft: 10}}>{rowData}</Text>}
+              renderRow={(rowData) => <Text style={{fontSize: 16, paddingLeft: 10}}>{rowData}</Text>}
               />
 
 
-<View><Text style={{fontSize: 22, 
+<View><Text style={{fontSize: 20, 
               fontWeight: "bold", 
               paddingLeft: 10, 
               paddingTop: 10,
@@ -89,7 +89,7 @@ export default class SettingsScreen extends React.Component {
               }}>CME Credits</Text></View>
             <ListView
               dataSource={this.state.dataSource5}
-              renderRow={(rowData) => <Text style={{fontSize: 18, paddingLeft: 10}}>{rowData}</Text>}
+              renderRow={(rowData) => <Text style={{fontSize: 16, paddingLeft: 10}}>{rowData}</Text>}
               />
       </View>
       
