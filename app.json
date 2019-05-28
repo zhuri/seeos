@@ -9,7 +9,12 @@
       "supportsTablet": false
     },
     "android": {
-      "package": "com.endrit.seeos"
+      "package": "com.endrit.seeos",
+      "splash": {
+        "image": "./assets/images/poster-final4.png",
+        "backgroundColor": "#ffffff",
+        "resizeMode": "cover"
+      }
     },
     "platforms": ["ios", "android"],
     "version": "1.0.0",
@@ -17,8 +22,7 @@
     "icon": "./assets/images/logo.png",
     "splash": {
       "image": "./assets/images/poster-final4.png",
-      "backgroundColor": "#ffffff",
-      "resizeMode": "cover"
+      "backgroundColor": "#ffffff"      
     },
     "updates": {
       "fallbackToCacheTimeout": 0
